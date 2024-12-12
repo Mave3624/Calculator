@@ -8,27 +8,26 @@ const negitive = document.querySelector('.negitive')
 const clean = document.querySelector('.clean')
 const dot = document.querySelector('.dot')
 
-let firstInput
+let firstInput 
 let secondInput 
 let operator
 
 let operation = function(firstInput, operator, secondInput) {
-    let a = Number(firstInput)
-    let b = Number(secondInput)
-
+    firstInput = Number(firstInput)
+    secondInput = Number(secondInput)
     switch(operator) {
         case '+':
-            return (a + b)
+            return (firstInput + secondInput)
         case '-':
-            return (a - b)
+            return (firstInput - secondInput)
         case '/':
-            return (a / b)
+            return (firstInput / secondInput)
         case '*':
-            return (a * b)
+            return (firstInput * secondInput)
         case '%':
-            return ((a / 100) * b)
-        case undefined:
-            return b
+            return ((firstInput / 100) * secondInput)
+        case undefined :
+            return secondInput
     }
 }
 degit.forEach((number) => { 
@@ -58,12 +57,12 @@ degit.forEach((number) => {
 cleanAll.addEventListener('click', () => {
     firstInput = ''
     secondInput = ''
-    operator = ''
-    a = 0
+    operator = undefined
     display.innerHTML = 0
 })
 clean.addEventListener('click', () => {
     if (display.textContent.includes('In')) {display.innerHTML = 0}
+    if (display.textContent.includes('a')) {display.innerHTML = 0}
     display.innerHTML = display.textContent.slice(0,(display.textContent.length - 1))
     if (display.textContent === '') display.innerHTML = 0
 })
@@ -73,13 +72,15 @@ persentage.addEventListener('click', () => {
 })
 equals.addEventListener('click', () => {
     secondInput = display.textContent;
-    (secondInput === '0' && operator === '/') ? display.innerHTML = 'Invalid':
+    if (display.textContent.includes('I')) secondInput = 0
+    secondInput === '0' && operator === '/' ? display.innerHTML = 'Invalid':
     display.innerHTML = operation(firstInput, operator, secondInput);
     if (display.textContent.length = 9) {
         display.innerHTML = display.textContent.slice(0,9)
     }
-    a = 0
-
+    firstInput = ''
+    secondInput = ''
+    operator = undefined
 })
 negitive.addEventListener('click', () => {
     display.textContent.includes('-') ? display.innerHTML = display.textContent.slice(1):
@@ -89,18 +90,11 @@ dot.addEventListener('click', () => {
     display.textContent.includes('.') ? dot.disenbled = true:
     display.innerHTML = display.textContent + '.';
 })
-let a = 0
 operate.forEach((opera) => {
     opera.addEventListener('click', () => {
-        a++
-        a === 1 ? firstInput = display.textContent: secondInput = display.textContent;
-
-        if (a > 1 && secondInput !== undefined) {
-            display.textContent = operation(firstInput, operator, secondInput)
-        }
-        if (display.textContent.length = 9) {
-            display.innerHTML = display.textContent.slice(0,9)
-        }
+        (firstInput === '') ? firstInput = display.textContent: secondInput = display.textContent;
+        if ((firstInput) !== '' && secondInput !== '') display.textContent = operation(firstInput, operator, secondInput)
+            if (display.textContent.length = 9) display.innerHTML = display.textContent.slice(0,9)
          operator = opera.textContent
          firstInput = display.textContent
     })
