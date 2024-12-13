@@ -7,16 +7,15 @@ body, html {
 }
 .main {
     background-color: gray;
-    box-sizing: border-box;
-    border: 3px double rgb(0, 0, 0);
-    border-radius: 5px;
-    display: flex;
+    border: 2px solid rgb(0, 0, 0);
     flex-direction: column;
-    gap: 1px;
-    padding: 1px;
-    width: 280px;
-    height: 380px;
+    border-radius: 10px;
+    display: flex;
+    gap: 2.5px;
+    width: 270px;
+    height: 400px;
     margin: 0 auto;
+    padding: 5px;
 }
 
 .layer {
@@ -24,12 +23,11 @@ body, html {
     display: flex;
     flex-direction: row;
     flex: 1;
-    gap: 1.5px;
+    gap: 2.5px;
 }
 .sub {
     display: flex;
     flex: 1;
-    gap: 1.5px;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
@@ -37,12 +35,15 @@ body, html {
     font-size: 20px;
 }
 .screen{    
+    box-sizing: border-box;
     display: flex;
+    align-items: center;
     flex-direction: row-reverse;
     font-family: monospace;
-    border: 1px solid rgb(66, 9, 9);
+    border: 2px solid rgb(66, 9, 9);
     border-radius: 8px;
     font-size: 44px;
+    margin-bottom: 15px;
 }
 
 .number {

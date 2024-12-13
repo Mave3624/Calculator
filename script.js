@@ -63,14 +63,19 @@ cleanAll.addEventListener('click', () => {
     display.innerHTML = 0
 })
 clean.addEventListener('click', () => {
-    if (display.textContent.includes('In')) {display.innerHTML = 0}
-    if (display.textContent.includes('a')) {display.innerHTML = 0}
+    if (display.textContent.includes('In') || display.textContent.includes('a')) {
+        firstInput = ''
+        secondInput = ''
+        operator = undefined
+        display.innerHTML = 0
+    }
     display.innerHTML = display.textContent.slice(0,(display.textContent.length - 1))
     if (display.textContent === '') display.innerHTML = 0
 })
 persentage.addEventListener('click', () => {
     firstInput = display.textContent
     operator = persentage.textContent
+    operatorChecker = 0
 })
 equals.addEventListener('click', () => {
     secondInput = display.textContent;
@@ -97,10 +102,15 @@ operate.forEach((opera) => {
     opera.addEventListener('click', () => {
         operatorChecker = 0;
         (firstInput === '') ? firstInput = display.textContent: secondInput = display.textContent;
-        if ((firstInput) !== '' && secondInput !== '' || 0) display.textContent = operation(firstInput, operator, secondInput)
+        console.log(display.textContent.includes('NaN') || display.textContent.includes('Invalid'))
+        console.log((firstInput) !== ''&& secondInput !== '' || secondInput !== '0')
+        if ((firstInput) !== '' && secondInput !== '' && secondInput !== '0') display.textContent = operation(firstInput, operator, secondInput)
         if (display.textContent.length = 9) display.innerHTML = display.textContent.slice(0,9)
             operator = opera.textContent
+        if(display.textContent.includes('a'))  {
+            firstInput = ''
+            operator = undefined
+        }
         if (display.textContent !== undefined || NaN || 'Invalid' || null) firstInput = display.textContent
-    
     })
 })
