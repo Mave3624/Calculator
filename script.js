@@ -7,9 +7,10 @@ const persentage = document.querySelector('.pesentage')
 const negitive = document.querySelector('.negitive')
 const clean = document.querySelector('.clean')
 const dot = document.querySelector('.dot')
+let operatorChecker 
 
-let firstInput 
-let secondInput 
+let firstInput = ''
+let secondInput = ''
 let operator
 
 let operation = function(firstInput, operator, secondInput) {
@@ -33,7 +34,8 @@ let operation = function(firstInput, operator, secondInput) {
 degit.forEach((number) => { 
     number.addEventListener('click', function click() {
         //keeps the result on the screen till a number is clicked
-        if (display.textContent === firstInput) display.textContent = 0
+        if (operatorChecker === 0 ) display.textContent = 0
+        operatorChecker = 1
 
         display.innerHTML += number.textContent
         //removes excess zero(0)
@@ -90,12 +92,15 @@ dot.addEventListener('click', () => {
     display.textContent.includes('.') ? dot.disenbled = true:
     display.innerHTML = display.textContent + '.';
 })
+
 operate.forEach((opera) => {
     opera.addEventListener('click', () => {
+        operatorChecker = 0;
         (firstInput === '') ? firstInput = display.textContent: secondInput = display.textContent;
-        if ((firstInput) !== '' && secondInput !== '') display.textContent = operation(firstInput, operator, secondInput)
-            if (display.textContent.length = 9) display.innerHTML = display.textContent.slice(0,9)
-         operator = opera.textContent
-         firstInput = display.textContent
+        if ((firstInput) !== '' && secondInput !== '' || 0) display.textContent = operation(firstInput, operator, secondInput)
+        if (display.textContent.length = 9) display.innerHTML = display.textContent.slice(0,9)
+            operator = opera.textContent
+        if (display.textContent !== undefined || NaN || 'Invalid' || null) firstInput = display.textContent
+    
     })
 })
