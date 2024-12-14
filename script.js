@@ -82,8 +82,8 @@ equals.addEventListener('click', () => {
     if (display.textContent.includes('I')) secondInput = 0
     secondInput === '0' && operator === '/' ? display.innerHTML = 'Invalid':
     display.innerHTML = operation(firstInput, operator, secondInput);
-    if (display.textContent.length = 9) {
-        display.innerHTML = display.textContent.slice(0,9)
+    if (display.textContent.length = 10) {
+        display.innerHTML = display.textContent.slice(0,10)
     }
     firstInput = ''
     secondInput = ''
@@ -102,8 +102,6 @@ operate.forEach((opera) => {
     opera.addEventListener('click', () => {
         operatorChecker = 0;
         (firstInput === '') ? firstInput = display.textContent: secondInput = display.textContent;
-        console.log(display.textContent.includes('NaN') || display.textContent.includes('Invalid'))
-        console.log((firstInput) !== ''&& secondInput !== '' || secondInput !== '0')
         if ((firstInput) !== '' && secondInput !== '' && secondInput !== '0') display.textContent = operation(firstInput, operator, secondInput)
         if (display.textContent.length = 9) display.innerHTML = display.textContent.slice(0,9)
             operator = opera.textContent
