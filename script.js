@@ -51,9 +51,7 @@ degit.forEach((number) => {
                 display.textContent = number.textContent
             }
         //check the length of input
-            if (display.textContent.length = 9) {
-                display.innerHTML = display.textContent.slice(0,9)
-            }
+        if (display.textContent.slice(0,1) === '-') display.innerHTML = display.textContent.slice(0,10); else display.innerHTML = display.textContent.slice(0,9)
     })
 })
 cleanAll.addEventListener('click', () => {
@@ -82,7 +80,7 @@ equals.addEventListener('click', () => {
     if (display.textContent.includes('I')) secondInput = 0
     secondInput === '0' && operator === '/' ? display.innerHTML = 'Invalid':
     display.innerHTML = operation(firstInput, operator, secondInput);
-    if (display.textContent.length = 10 && display.textContent.slice(0,1) !== '-') display.innerHTML = display.textContent.slice(0,9)
+        if (display.textContent.slice(0,1) === '-') display.innerHTML = display.textContent.slice(0,10); else display.innerHTML = display.textContent.slice(0,9)
     firstInput = ''
     secondInput = ''
     operator = undefined
@@ -101,7 +99,7 @@ operate.forEach((opera) => {
         operatorChecker = 0;
         (firstInput === '') ? firstInput = display.textContent: secondInput = display.textContent;
         if ((firstInput) !== '' && secondInput !== '' && secondInput !== '0') display.textContent = operation(firstInput, operator, secondInput)
-        if (display.textContent.length = 10 && display.textContent.slice(0,1) !== '-') display.innerHTML = display.textContent.slice(0,9)
+        if (display.textContent.slice(0,1) === '-') display.innerHTML = display.textContent.slice(0,10); else display.innerHTML = display.textContent.slice(0,9)
             operator = opera.textContent
         if(display.textContent.includes('a'))  {
             firstInput = ''
